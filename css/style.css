@@ -1,67 +1,56 @@
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+.heart {
+  background-color: crimson;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 45%; 
+  top: 45%;
+  animation: heartbeat 1.25s infinite;
 }
 
-body {
-  font-size: 15px;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-html {
-  font-family: 'Roboto', sans-serif;
-}
-
-.loader {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  background: #34495d;
-}
-.loader .loading_box {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 350px;
-  height: 300px;
-  padding: 50px;
-  border: 2px solid #9febe0;
-  border-radius: 100px;
-  background: #34495d;
-  box-shadow: 5px 5px 50px 15px rgba(0, 255, 235, 0.3);
-}
-.loader .loading_box .symbol {
-  text-align: center;
-}
-.loader .loading_box .symbol p {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #fff;
-  margin: 30px 0;
-}
-.loader .loading_box .symbol div {
-  width: 50px;
-  height: 50px;
-  margin: 0px auto;
+.heart::before,
+.heart::after {
+  content: "";
+  background-color: crimson;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  border-top: 5px solid #fff;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  background: rgba(255, 255, 255, 0);
-  animation-name: rotate;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
+  position: absolute;
+  animation: pulsecolor 1.25s infinite;
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  top: 0;
+  left: 50px;
+}
+
+@keyframes heartbeat {
+	0% {
+    transform: scale(1)
+               rotate(-45deg);
+	  }
+	10% {
+    transform: scale(1.25)
+               rotate(-45deg);
+    background-color: #EF395E;
+	  }
+  100% {
+      transform: scale(1)
+                 rotate(-45deg);
+  }
+}
+
+@keyframes pulsecolor {
+  10% {
+  background-color: #EF395E;
+  }
 }
